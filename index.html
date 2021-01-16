@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body {
+				background-color: #ffffff;
+				margin: 0;
+				height: 2000px;
+				font-family: 'inconsolata';
+				font-size: 18px;
+				font-weight: normal;
+			}
+
+			.site_header {
+				position: fixed;
+				z-index: 10000;
+				top: 40px;
+			}
+
+			.site_header ul.menu li {
+				display: inline-block;
+				margin-right: 30px;
+			}
+
+			.site_header ul.menu li a.current {
+				text-decoration: line-through;
+			}
+
+			.site_header .menu {
+				margin-left: 50px;
+			}
+
+			.projects_list {
+				position: fixed;
+				z-index: 10000;
+				top: 230px;
+				margin-left: 50px;
+			}
+
+			.projects_list li a:hover {
+				text-decoration: none;
+			}
+
+			.projects_list li a.selected {
+				text-decoration: line-through;
+				cursor: default;
+			}
+
+			.projects_list li a.selected:hover {
+				text-decoration: line-through;
+			}
+
+			.next_project, .prev_project {
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				opacity: 0.0;
+				transition: opacity 0.2s;
+				text-align: center;
+				padding-top: 320px;
+				width: 30%;
+				height: 100%;
+			}
+
+			.next_project {
+				left: auto;
+				right: 0px;
+			}
+
+			li {
+				list-style: none;
+			}
+			ul {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			a {
+				color: #000000;
+			}
+
+			canvas {
+				z-index: -1;
+			}
+
+			.barrel_border_section {
+				background: #000;
+				width: 6px;
+				transition: opacity 0.2s;
+				opacity: 1;
+			}
+
+			.barrel_border_section {
+				cursor: pointer;
+			}
+
+			.barrel_selected .barrel_border_section {
+				opacity: 0.0;
+			}
+			.barrel_selected .barrel_side {
+				display: none;
+			}
+			.barrel_selected .barrel_side.selected {
+				display: inline-block;
+			}
+			.barrel_selected .barrel_border_section.selected {
+				opacity: 1;
+			}
+			.barrel_hover .barrel_border_section {
+				background: #ccc;
+			}
+			.barrel_hover .barrel_border_section.hover {
+				background: #000;
+			}
+			.project_name {
+				display: none;
+				width: 100%;
+				text-align: center;
+				margin-top: 335px;
+				position: relative;
+				z-index: 1000;
+			}
+			.project_text {
+				display: none;
+			}
+
+		</style>
+	</head>
+	<body>
+		<script src="js/three.js"></script>
+
+		<script src="js/jquery-2.1.1.js"></script>
+		<script src="js/jquery.scrollmagic.js"></script>
+		<script src="js/Tween.js"></script>
+		<script src="js/barrel_text.js"></script>
+		<script src="js/jkmcrg.js"></script>
+
+		<script src="js/renderers/CSS3DRenderer.js"></script>
+
+		<div id="main_menu" class="site_header">
+			<ul class="menu">
+				<li>
+					<a href="#about">about</a>
+				</li>
+				<li>
+					<a href="#projects" class="current">projects</a>
+				</li>
+				<li>
+					<a href="#contact">contact</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="projects_list">
+			<h1>Recent Work</h1>
+			<ul>
+				<li data-barrel-num="1"><a href="#project">Todd Reed</a></li>
+				<li data-barrel-num="2"><a href="#project">Huckle & Goose</a></li>
+				<li data-barrel-num="3"><a href="#project">Deborah Berke</a></li>
+				<li data-barrel-num="4"><a href="#project">Peak Spirits</a></li>
+			</ul>
+		</div>
+
+		<div class="prev_project">Prev</div>
+		<div class="next_project">Next</div>
+
+		<div class="project_text" data-project-i="1">
+			Todd Reed
+
+			Designed by: Berger & Foer
+			Developed with: Grant Blakeman
+
+			In collaboration with Grant Blakeman, we pretty much coded the shit out of it. We built in some cool features like pushstate filtering that manages a large hierarchy of items smoothly for intuitive jewelry finding.
+
+			We also created a jewelry inventory system for storing and uploading all of the things.
+
+			We also created this cool about section so you can be all about it and whatnot. Which is pretty cool! I’m about that, if you know what I mean.
+		</div>
+		<div class="project_text" data-project-i="3">
+	    The bird looked at him when he spoke. He was too tired even to examine the line and he teetered on it as his delicate feet gripped it fast. 'It's steady,' the old man told him. 'It's too steady. You shouldn't be that tired after a windless night. What are birds coming to?' The hawks, he thought, that come out to sea to meet them. But he said nothing of this to the bird who could not understand him anyway and who would learn about the hawks soon enough. 'Take a good rest, small bird,' he said. 'Then go 'Take a good rest, small bird,' he said. 'Then go in and take your chance like any man or bird or fish.' It encouraged him to talk because his back had stiffened in the night and it hurt truly now. 'Stay at my house if you like, bird,' he said. 'I am sorry I cannot hoist the sail and take you in with the small breeze that is rising. But I am with a friend.'". "It will uncramp though, he thought. Surely it will uncramp to help my right hand. There are three things that are brothers: the fish and my two hands. It must uncramp. It is unworthy of it to be cramped. The fish had slowed again and was going at his usual pace. I wonder why he jumped, the old man thought. He jumped almost as though to show me how big he was. i know now, anyway, he thought. I wish I could show him what sort of man I am. but then he would see the cramped hand. Let him think I am more man than I am and I will be so. I wish I was the fish, he thought, with everything he has against only my will and my intelligence. The fish had slowed again and was going at his usual pace. I wonder why he jumped, the old man thought. He jumped almost as though to show me how big he was. i know now, anyway, he thought. I wish I could show him what sort of man I am. but then he would see the cramped hand. Let him think I am more man than I am and I will be so. I wish I was the fish, he thought, with everything he has against only my will and my intelligence.
+	  </div>
+		<div class="project_text" data-project-i="2">
+	    The bird looked at him when he spoke. He was too tired even to examine the line and he teetered on it as his delicate feet gripped it fast. 'It's steady,' the old man told him. 'It's too steady. You shouldn't be that tired after a windless night. What are birds coming to?' The hawks, he thought, that come out to sea to meet them. But he said nothing of this to the bird who could not understand him anyway and who would learn about the hawks soon enough. 'Take a good rest, small bird,' he said. 'Then go 'Take a good rest, small bird,' he said. 'Then go in and take your chance like any man or bird or fish.' It encouraged him to talk because his back had stiffened in the night and it hurt truly now. 'Stay at my house if you like, bird,' he said. 'I am sorry I cannot hoist the sail and take you in with the small breeze that is rising. But I am with a friend.'". "It will uncramp though, he thought. Surely it will uncramp to help my right hand. There are three things that are brothers: the fish and my two hands. It must uncramp. It is unworthy of it to be cramped. The fish had slowed again and was going at his usual pace. I wonder why he jumped, the old man thought. He jumped almost as though to show me how big he was. i know now, anyway, he thought. I wish I could show him what sort of man I am. but then he would see the cramped hand. Let him think I am more man than I am and I will be so. I wish I was the fish, he thought, with everything he has against only my will and my intelligence. I wonder why he jumped, the old man thought. He jumped almost as though to show me how big he was. i know now, anyway, he thought. I wish I could show him what sort of man I am. but then he would see the cramped hand. Let him think I am more man than I am and I will be so. I wish I was the fish, he thought, with everything he has against only my will and my intelligence everything he has against only my will and my intelligence..
+	  </div>
+		<div class="project_text" data-project-i="3">
+	    The bird looked at him when he spoke. He was too tired even to examine the line and he teetered on it as his delicate feet gripped it fast. 'It's steady,' the old man told him. 'It's too steady. You shouldn't be that tired after a windless night. What are birds coming to?' The hawks, he thought, that come out to sea to meet them. But he said nothing of this to the bird who could not understand him anyway and who would learn about the hawks soon enough. 'Take a good rest, small bird,' he said. 'Then go 'Take a good rest, small bird,' he said. 'Then go in and take your chance like any man or bird or fish.' It encouraged him to talk because his back had stiffened in the night and it hurt truly now. 'Stay at my house if you like, bird,' he said. 'I am sorry I cannot hoist the sail and take you in with the small breeze that is rising. But I am with a friend.'". "It will uncramp though, he thought. Surely it will uncramp to help my right hand. There are three things that are brothers: the fish and my two hands. It must uncramp. It is unworthy of it to be cramped. The fish had slowed again and was going at his usual pace. I wonder why he jumped, the old man thought. He jumped almost as though to show me how big he was. i know now, anyway, he thought. I wish I could show him what sort of man I am. but then he would see the cramped hand. Let him think I am more man than I am and I will be so. I wish I was the fish, he thought, with everything he has against only my will and my intelligence. I wonder why he jumped, the old man thought. He jumped almost as though to show me how big he was. i know now, anyway, he thought. I wish I could show him what sort of man I am. but then he would see the cramped hand. Let him think I am more man than I am and I will be so. I wish I was the fish, he thought, with everything he has against only my will and my intelligence everything he has against only my will and my intelligence..
+	  </div>
+	</body>
+</html>
